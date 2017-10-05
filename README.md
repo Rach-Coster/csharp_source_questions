@@ -16,4 +16,6 @@ This class will include:
 + Switch Statements with Parameters *(New to 7.0)*
 + Polymorphism 
 
+The repository includes both the .zip and the actual project folder for both questions. 
+
 Please feel free to comment any feedback on how I can make this code better and I will attempt to do so. 
