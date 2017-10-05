@@ -12,10 +12,7 @@ namespace Question_one_solution_rachel_coster
         {
             var bestOf = new BestOfCSharp();
 
-            bestOf.CollectingGarbage(bestOf);
-            bestOf.RomanNumberalGenerator();
-
-            Console.Read();
+            bestOf.CollectingGarbage(bestOf); 
         }
     }
 }
