@@ -11,9 +11,14 @@ namespace Question_one_solution_rachel_coster
         static void Main(string[] args)
         {
             var bestOf = new BestOfCSharp();
-
+            //showing off garbage generator
             bestOf.CollectingGarbage(bestOf);
-            bestOf.RomanNumberalGenerator();
+
+            //showing off local functions 
+            bestOf.RomanNumeralGenerator();
+
+            //showing off switch statements with parameters 
+            bestOf.rectangularLove();
 
             Console.Read();
         }
