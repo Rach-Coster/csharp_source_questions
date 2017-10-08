@@ -8,14 +8,14 @@ The following were the questions I was asked to do in C#:
 
 For question one I am making a class called **The best of C#** which will include examples for both my favourite features generally in C# and my favourite feature in C# version 7.0.
 
-This class currently includes (As of 5/10/17): 
+This class currently includes (As of 8/10/17): 
 + Garbage Collection
 + Local Functions *(New to 7.0)*
++ Switch Statements with Patterns *(New to 7.0)*
 
 Will eventually include: 
 + Turble Types *(New to 7.0)* 
 + Turble Literals *(New to 7.0)*
-+ Switch Statements with Patterns *(New to 7.0)*
 + Polymorphism 
 
 The repository includes both the .zip and the actual project folder for both questions. 
