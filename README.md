@@ -15,7 +15,7 @@ This class currently includes (As of 5/10/17):
 Will eventually include: 
 + Turble Types *(New to 7.0)* 
 + Turble Literals *(New to 7.0)*
-+ Switch Statements with Parameters *(New to 7.0)*
++ Switch Statements with Patterns *(New to 7.0)*
 + Polymorphism 
 
 The repository includes both the .zip and the actual project folder for both questions. 
