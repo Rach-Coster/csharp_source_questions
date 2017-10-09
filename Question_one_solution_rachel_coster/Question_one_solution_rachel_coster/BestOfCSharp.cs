@@ -84,17 +84,17 @@ namespace Question_one_solution_rachel_coster
             for (int i = 0; i < 3; i++) {
                 //Created three random numbers
                 arr[i] = r.Next(1, 1999);
-                Console.WriteLine("Number: {0}", arr[i]);
+                Console.WriteLine("Number is: " + arr[i]);
                 //Returned the roman numeral equivalent and converted it from a list to an array 
                 string romanNum = string.Join("", Romaniser(arr[i]).ToArray());
-                Console.WriteLine("Roman Numerals: {0}", romanNum);
+                Console.WriteLine("Roman Numeral is: " + romanNum);
             }
 
             //Converts the number into roman numerals 
             List<String> Romaniser(int a_rand) {
                 //gets the number of digits from the number
-                double digits = Math.Ceiling(Math.Log10(a_rand));
-
+                double digits = a_rand.ToString().Length;
+ 
                 List<int> numList = new List<int>();
 
                 //splits the number into one index per digit
@@ -103,208 +103,69 @@ namespace Question_one_solution_rachel_coster
                     a_rand = a_rand / 10;
                 }
 
-                //reverses the list so that the list is in order of digits 
-                numList.Reverse();
-
                 List<String> romanNum = new List<String>();
-                //checks the number of digits and creates the roman numerial accordingly
-                if (digits == 4) {
-                    for (int i = 0; i < digits; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                romanNum.Add("M");
-                                break;
-                            case 1:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("C"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("CD"); }
-                                else if (numList[i] == 5) { romanNum.Add("D"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9) {
-                                    romanNum.Add("D");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("C"); };
-                                }
-
-                                else { romanNum.Add("CM"); };
-                                break;
-
-                            case 2:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("X"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("XL"); }
-                                else if (numList[i] == 5) { romanNum.Add("L"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9)
-                                {
-                                    romanNum.Add("L");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("X"); };
-                                }
-
-                                else { romanNum.Add("XC"); };
-                                break;
-
-                            case 3:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("I"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("IV"); }
-                                else if (numList[i] == 5) { romanNum.Add("V"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9)
-                                {
-                                    romanNum.Add("V");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("I"); };
-                                }
-
-                                else { romanNum.Add("IX"); };
-                                break;
-                        }
+                //checks theo number of digits and creates the roman numerial accordingly
+                for(int i = (int) digits; i > 0; i--) {
+                    switch (i) { 
+                        case 4:
+                            romanNum.Add("M");
+                            break;
+                        case 3 when (numList.ElementAt(i - 1) < 4):
+                            for (int j = 0; j < numList.ElementAt(i - 1); j++) { romanNum.Add("C"); };
+                            break;
+                        case 3 when (numList.ElementAt(i - 1) == 4):
+                            romanNum.Add("CD");
+                            break;
+                        case 3 when (numList.ElementAt(i - 1) == 5):
+                            romanNum.Add("D");
+                            break;
+                        case 3 when (numList.ElementAt(i - 1) > 5 && numList.ElementAt(i - 1) < 9):
+                            romanNum.Add("D");
+                            for (int j = 0; j < numList.ElementAt(i - 1) - 5; j++) { romanNum.Add("C"); };
+                            break;
+                        case 3 when (numList.ElementAt(i - 1) == 9):
+                            romanNum.Add("CM");
+                            break; 
+                        case 2 when (numList.ElementAt(i - 1) < 4):
+                            for (int j = 0; j < numList.ElementAt(i - 1); j++) { romanNum.Add("X"); };
+                            break;
+                        case 2 when (numList.ElementAt(i - 1) == 4):
+                            romanNum.Add("XL");
+                            break; 
+                        case 2 when (numList.ElementAt(i - 1) == 5):
+                            romanNum.Add("L");
+                            break;
+                        case 2 when (numList.ElementAt(i - 1) > 5 && numList.ElementAt(i - 1) < 9):
+                            romanNum.Add("L");
+                            for (int j = 0; j < numList.ElementAt(i - 1) - 5; j++) { romanNum.Add("X"); }
+                            break;
+                        case 2 when (numList.ElementAt(i - 1) == 9):
+                            romanNum.Add("XC");
+                            break;
+                        case 1 when (numList.ElementAt(i - 1) < 4):
+                            for (int j = 0; j < numList.ElementAt(i - 1); j++) { romanNum.Add("I"); };
+                            break;
+                        case 1 when (numList.ElementAt(i - 1) == 4):
+                            romanNum.Add("IV");
+                            break;
+                        case 1 when (numList.ElementAt(i - 1) == 5):
+                            romanNum.Add("V");
+                            break;
+                        case 1 when (numList.ElementAt(i - 1) > 5 && numList.ElementAt(i - 1) < 9):
+                            romanNum.Add("V");
+                            for (int j = 0; j < numList.ElementAt(i - 1) - 5; j++) { romanNum.Add("I"); };
+                            break;
+                        case 1 when (numList.ElementAt(i - 1) == 9):
+                            romanNum.Add("IX");
+                            break;
                     }
-
                 }
-
-                else if (digits == 3) {
-                    for (int i = 0; i < digits; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("C"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("CD"); }
-                                else if (numList[i] == 5) { romanNum.Add("D"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9)
-                                {
-                                    romanNum.Add("D");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("C"); };
-                                }
-
-                                else { romanNum.Add("CM"); };
-                                break;
-
-                            case 1:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("X"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("XL"); }
-                                else if (numList[i] == 5) { romanNum.Add("L"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9)
-                                {
-                                    romanNum.Add("L");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("X"); };
-                                }
-
-                                else { romanNum.Add("XC"); };
-                                break;
-
-                            case 2:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("I"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("IV"); }
-                                else if (numList[i] == 5) { romanNum.Add("V"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9)
-                                {
-                                    romanNum.Add("V");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("I"); };
-                                }
-
-                                else { romanNum.Add("IX"); };
-                                break;
-                        }
-                    }
-
-                }
-
-                else if (digits == 2) {
-                    for (int i = 0; i < digits; i++)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("X"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("XL"); }
-                                else if (numList[i] == 5) { romanNum.Add("L"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9)
-                                {
-                                    romanNum.Add("L");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("X"); };
-                                }
-
-                                else { romanNum.Add("XC"); };
-                                break;
-
-                            case 1:
-                                if (numList[i] < 4)
-                                {
-                                    for (int j = 0; j < numList[i]; j++) { romanNum.Add("I"); };
-                                }
-
-                                else if (numList[i] == 4) { romanNum.Add("IV"); }
-                                else if (numList[i] == 5) { romanNum.Add("V"); }
-
-                                else if (numList[i] > 5 && numList[i] < 9)
-                                {
-                                    romanNum.Add("V");
-                                    for (int j = 0; j < numList[i] - 5; j++) { romanNum.Add("I"); };
-                                }
-
-                                else { romanNum.Add("IX"); };
-                                break;
-                        }
-                    }
-
-                }
-
-                else {
-
-                    if (numList[0] < 4)
-                    {
-                        for (int j = 0; j < numList[0]; j++) { romanNum.Add("I"); };
-                    }
-
-                    else if (numList[0] == 4) { romanNum.Add("IV"); }
-                    else if (numList[0] == 5) { romanNum.Add("V"); }
-
-                    else if (numList[0] > 5 && numList[0] < 9)
-                    {
-                        romanNum.Add("V");
-                        for (int j = 0; j < numList[0] - 5; j++) { romanNum.Add("I"); };
-                    }
-
-                    else { romanNum.Add("IX"); };
-                }
-                return romanNum;
+                return romanNum; 
             }
         }
 
-        public void rectangularLove()
-        {
+        //Question Sourced From: https://www.interviewcake.com/question/python/rectangular-love
+        public void rectangularLove() {
             Console.WriteLine("---Switch Statements With Perameters---");
 
             Random rand = new Random();
