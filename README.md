@@ -18,6 +18,10 @@ Will eventually include:
 + Turble Literals *(New to 7.0)*
 + Polymorphism 
 
+Stuff to fix: 
++ Add a version arr so that more junk data is created for question one garbage collector 
++ Add if statements inside each switch case to increase legibility 
+
 The repository includes both the .zip and the actual project folder for both questions. 
 
 Please feel free to comment any feedback on how I can make this code better and I will attempt to do so. 
